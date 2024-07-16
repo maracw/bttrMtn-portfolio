@@ -1,0 +1,114 @@
+﻿@model Recipe
+@{
+}
+Hi it's the recipe display page
+<h3>@Model.Title</h3>
+<h4>By: @Model.RecipeUser.UserName</h4>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> signInManager
+@if (signInManager.IsSignedIn(User) && Model.RecipeUser.UserName == User.Identity.Name)
+{
+    <a asp-action="EditRecipe" asp-route-id="@Model.RecipeID" class="btn btn-primary">Edit</a>
+    <h2>You are the author</h2>
+}
+else
+{
+        <h2>You are not the author</h2>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img src="@Model.ImageURL" class="img-fluid" /><br />
+            <p>@Model.Category</p>
+        </div>
+        <div class="col-6"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Method:
+            <ul>
+                @{
+                    string[] methodList = Model.Instructions.Split(';');
+                    for (int i = 0; i < methodList.Length; i++)
+                    {
+                        <li>@methodList[i]</li>
+
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col flex-container">
+            <div class="row">
+                <div class="col-8">
+                    <h4>Ingredients</h4>
+                </div>
+                <div class="col-4">
+                    <form method="post">
+                        <input type="hidden" asp-for="RecipeID" />
+                        <select name="ratio" class="form-select calculate-ratio-form">
+                            <option for="ratio" value=.5>half</option>
+                            <option for="ratio" value=2>double</option>
+                            <option for="ratio" value=3>triple</option>
+                        </select>
+                        <button type="submit" class="btn custom-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+           
+            <div class="row">
+                <ul>
+                    @{
+                        foreach (Ingredient i in Model.Ingredients)
+                        {
+                            <li>@i.Amount  @i.Units @i.Name</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="log-area">
+        @if (Model.Logs.Count > 0)
+        {
+            foreach (LogEntry l in Model.Logs)
+            {
+
+                <p>
+                    @l.Headline : @l.Rating Stars  <a href="#demo" data-bs-toggle="collapse"><img src="/images/icons/expand_more_FILL1_wght400_GRAD0_opsz48.svg" /></a>
+                </p>
+                <div id="demo" class="collapse">
+                    @{
+                        int starcount = l.Rating;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (starcount > 0)
+                            {
+                                <img src="/images/icons/star_FILL1_wght400_GRAD0_opsz48.svg" />
+                            }
+                            else
+                            {
+                                <img src="/images/icons/star_FILL0_wght400_GRAD0_opsz48.svg" />
+                            }
+                            starcount--;
+                        }
+                    }
+                </div>
+                <p>@l.Description</p>
+                <p>By @l.LogUser.UserName on @l.LogDate</p>
+            }
+            <hr />
+
+
+        }
+        <p>Add a log to this</p>
+        <a asp-action="AddLog" asp-route-id="@Model.RecipeID" class="btn btn-primary">Log</a>
+        <form method="get">
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>
+
+

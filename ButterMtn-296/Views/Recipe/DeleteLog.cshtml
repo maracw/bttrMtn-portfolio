@@ -1,0 +1,32 @@
+﻿@model LogEntry
+@{
+    ViewData["Title"] = "Delete Log";
+}
+
+<h1>Delete A Log</h1>
+<h2>You are goinf to delete @Model.Headline</h2>
+<h3>Are you sure you want to delete this?</h3>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<form method="post" class="container custom-form">
+    <input type="hidden" asp-for="RecipeID" />
+    <input type="hidden" asp-for="LogEntryID" />
+    <input type="hidden" asp-for="LogUser" />
+    <input type="hidden" asp-for="Headline" />
+    <input type="hidden" asp-for="Description" />
+    <input type="hidden" asp-for="Rating" />
+    <input type="hidden" asp-for="LogDate" />
+    
+        <div class="row p-2">
+            <button type="submit" class="form-control btn btn-danger col-2">DELETE</button>
+        </div>
+</form>
+
+<br />
+<hr />
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

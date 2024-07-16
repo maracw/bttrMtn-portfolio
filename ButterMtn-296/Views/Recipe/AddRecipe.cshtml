@@ -1,0 +1,148 @@
+﻿@model RecipeVM
+@{
+}
+
+<!--container for comment form-->
+<div class="container">
+    <!--top row for title-->
+    <div class="row m-3 p-2">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <h4 class="mx-auto">
+                Add A Recipe to Butter Mountain
+            </h4>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+    <!--2nd row for form body-->
+    <div class="row">
+        <!--white space-->
+        <div class="col-lg-2"></div>
+        <!--form body-->
+
+        <div class="col-sm-12 col-lg-8">
+            <form method="post" class="col">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row mt-2 p-2">
+                    <div class="col form-group">
+                        <label asp-for="Recipe.Title" class="form-label">
+                            Recipe Title:
+                        </label>
+                        <input asp-for="Recipe.Title" class="form-control" /><br />
+                    </div>
+                </div>
+                <div class="row mt-2 p-2">
+                    @using Microsoft.AspNetCore.Identity
+                    @inject SignInManager<AppUser> signInManager
+                    <!--SignInManager class has a UserManager with it-->
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <div class="row p-2">
+                            <label asp-for="vmUserName" class="control-label  col-md-1">Your name:</label><br />
+                            <input asp-for="vmUserName" value=@User.Identity.Name placeholder=@User.Identity.Name class="form-control col-md-6"></input>
+                        </div>
+                    }
+                </div>
+                <div class="row mt-2 p-2">
+                    <div class="col form-group">
+                        <label asp-for="Recipe.Category" class="form-label">
+                            Recipe Category or Categories:
+                        </label>
+                        <input asp-for="Recipe.Category" class="form-control" /><br />
+                    </div>
+                </div>
+                <div class="mt-2 p-2 row">
+                    <div class=" col mt-2 p-2form-group">
+                        <label asp-for="Recipe.RecipeDate">Date you first made this(ish)</label><br />
+                        <input type="date" asp-for="Recipe.RecipeDate" class="form-control" />
+                    </div>
+                    <div class=" col mt-2 p-2 form-group">
+                        <label asp-for="Recipe.Difficulty" class="form-label">Select Difficulty:</label>
+                        <select class="form-select" asp-for="Recipe.Difficulty">
+                            <option value="1">Easy</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Difficult</option>
+                            <option value="4">Extreme</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-2 p-2 row form-group">
+                    <div class="m-2 p-2 col">
+                        <label asp-for="Ingredients" class="form-label mt-2 p-2">List the Ingredients (include amount and units). Separate each ingredient by a ','</label>
+                        <table id="add-table">
+                            <thead>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td>Units</td>
+                                    <td>Ingredient Name</td>
+                                </tr>
+                            </thead>
+                            <tr id="item-0">
+                                <td><input asp-for="Ingredients[0].Amount"></input></td>
+                                <td><input asp-for="Ingredients[0].Units"></input></td>
+                                <td><input asp-for="Ingredients[0].Name"></input></td>
+                            </tr>
+                            <tr id="item-1">
+                                <td><input asp-for="Ingredients[1].Amount"></input></td>
+                                <td><input asp-for="Ingredients[1].Units"></input></td>
+                                <td><input asp-for="Ingredients[1].Name"></input></td>
+                            </tr>
+                            <tr id="item-2">
+                                <td><input asp-for="Ingredients[2].Amount"></input></td>
+                                <td><input asp-for="Ingredients[2].Units"></input></td>
+                                <td><input asp-for="Ingredients[2].Name"></input></td>
+                            </tr>
+                            <tr id="item-3">
+                                <td><input asp-for="Ingredients[3].Amount"></input></td>
+                                <td><input asp-for="Ingredients[3].Units"></input></td>
+                                <td><input asp-for="Ingredients[3].Name"></input></td>
+                            </tr>
+                            <tr id="item-4">
+                                <td><input asp-for="Ingredients[4].Amount"></input></td>
+                                <td><input asp-for="Ingredients[4].Units"></input></td>
+                                <td><input asp-for="Ingredients[4].Name"></input></td>
+                            </tr>
+                            <tr id="item-5">
+                                <td><input asp-for="Ingredients[6].Amount"></input></td>
+                                <td><input asp-for="Ingredients[6].Units"></input></td>
+                                <td><input asp-for="Ingredients[6].Name"></input></td>
+                            </tr>
+                            <tr id="item-6">
+                                <td><input asp-for="Ingredients[6].Amount"></input></td>
+                                <td><input asp-for="Ingredients[6].Units"></input></td>
+                                <td><input asp-for="Ingredients[6].Name"></input></td>
+                            </tr>
+                            <tr id="item-7">
+                                <td><input asp-for="Ingredients[7].Amount"></input></td>
+                                <td><input asp-for="Ingredients[7].Units"></input></td>
+                                <td><input asp-for="Ingredients[7].Name"></input></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="mt-2 p-2 row">
+                    <div class="m-2 p-2 col form-group">
+                        <label asp-for="Recipe.Instructions" class="form-label mt-2 p-2">Method(end each individual step with a semi-colon):</label>
+                        <textarea asp-for="Recipe.Instructions" class="form-control mt-2 p-2" rows="8">
+                        </textarea><br />
+                    </div>
+                </div>
+                <div class="mt-2 p-2 row">
+                    <a href="#photo" data-bs-toggle="collapse"><img src="/images/icons/expand_more_FILL1_wght400_GRAD0_opsz48.svg" /></a>
+
+
+                    <div id="photo" class="collapse">
+                        <div class="m-2 p-2 col form-group">
+                            <label asp-for="Recipe.ImageURL" class="form-label mt-2 p-2">Add the path to the url (it should look like "/images/beesting1.jpg"):</label>
+                            <input asp-for="Recipe.ImageURL" class="form-control mt-2 p-2" /></input>
+                        </div>
+                    </div>
+
+                    <!--submit button-->
+                    <div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+            </form>
+        </div>

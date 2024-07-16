@@ -1,0 +1,45 @@
+﻿@model List<Recipe>
+
+<h1>Manage Recipes</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Recipe Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        Number of Log Entries: @item.Logs.Count()
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (LogEntry log in @item.Logs)
+                            {
+                                <li>Headline: @log.Headline by @log.LogUser.UserName on @log.LogDate</li>
+                                <li>
+                                        <a asp-controller="Recipe" asp-action="Details" asp-route-id="@item.RecipeID">Details</a> |
+                                        <!--to do fix edit - this should be editing the same log-->
+                                    <a asp-controller="Recipe" asp-action="EditLog" asp-route-id="@log.LogEntryID">Add</a> |
+                                    <a asp-controller="Recipe" asp-action="DeleteLog" asp-route-id="@log.LogEntryID">Delete</a> |
+                                </li>
+                            }
+                        </ul>
+                        @*<a asp-controller="Recipe" asp-action="Details" asp-route-id="@item.RecipeID">Details</a> |
+         <a asp-controller="Recipe" asp-action="DeleteRecipe" asp-route-id="@item.RecipeID">Delete</a>|
+         <!--TO DO FIX THIS-->
+        <a asp-controller="Recipe" asp-action="Edit" asp-route-id="@item.RecipeID">Edit</a>*@
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+

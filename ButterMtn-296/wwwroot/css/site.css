@@ -1,0 +1,169 @@
+﻿
+@import url("https://use.typekit.net/wax4mji.css");
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    margin:0;
+}
+
+body {
+    font-size: 20px;
+    font-family: "refrigerator-deluxe", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    margin-bottom: 8em;
+    background-color: #FFF7E6;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+    display: flex;
+    color: #FFF7E6;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: flex-end;
+}
+header span {
+    display: block;
+    font-family: 'Bebas Neue', Georgia;
+    font-size: 5.0em;
+    color: #FFF7E6;
+    margin-bottom: 0px;
+}
+header ul {
+margin-left: auto;
+}
+
+a:hover, a:focus {
+    color: #540B0E;
+    background-color:#FFF7E6
+}
+
+/*reseting bootstrap buttons*/
+.btn {
+    font-size: 1.5em;
+}
+.btn-primary {
+    background-color: #540B0E;
+    color: #FFF7E6;
+    border-color:#000;
+}
+.btn-primary:hover {
+        background-color: #c2272d;
+        color: #FFF7E6;
+        border-color: #fff;
+}
+container {
+    position:relative;
+}
+
+.frontpage-flex {
+display: flex;
+justify-content:space-between;
+}
+
+.branding span {
+    display: block;
+    font-weight: bold;
+    font-size: 97px;
+    line-height: 73.23px;
+    padding-top: 10px;
+}
+.branding-imgReplace a {
+    display: block;
+    box-sizing: border-box;
+    /* min-height: 100px;
+    max-height: 600px; */
+    max-height: 400px;
+    max-width: 400px;
+    min-height: 200px;
+    min-width: 200px;
+    position: absolute;
+    overflow: hidden;
+    text-indent: -999px;
+    background-image: url("../images/branding/branding-whiteOnBlack.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+section .branding span {
+    font-size: 169px;
+    line-height: 127.05px;
+}
+.custom-nametext {
+    font-family: 'Bebas Neue', Geogria, sans-serif;
+    font-size:2em;
+}
+.custom-form {
+    background-color: rgba(84, 11, 13,.33);
+    border-radius: .25em;
+}
+
+.custom-red {
+    background-color: #540B0E;
+    color: #FFF7E6;
+}
+
+.custom-cream {
+    background-color: #FFF7E6;
+    color: black;
+}
+
+.custom-btn {
+    background-color: #540B0E;
+    border-color: #540B0E;
+    color: #FFF7E6;
+}
+
+.custom-nav-text {
+    color: #FFF7E6;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.calculate-ratio-form {
+width=33%;
+margin-left:auto;
+}
+
+.star-check svg{
+    fill: pink;
+}
+}
+.star-label
+
+.star-svg {
+    fill:gray;
+}
+.star-svg:focus {
+    fill:yellow;
+}
+.star-check:checked>label>svg{
+    fill: red;
+}
+
+:checked{
+    fill: blue;
+    
+}
+
+input:checked {
+    color:purple;
+}

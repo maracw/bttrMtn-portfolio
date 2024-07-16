@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ButterMountain2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/ButterMountain2.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/m-icons.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
+</head>
+<body>
+    <header class="container-fluid custom-red">
+        <div>
+            <a class="navbar-brand branding" asp-area="" asp-controller="Home" asp-action="Index">
+                <span>Butter</span>
+                <span>Mountain</span>
+            </a>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar navbar-collapse collapse d-sm-inline-flex ms-3 justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item custom-nav-text">
+                            <a class="nav-link custom-nav-text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item custom-nav-text">
+                            <a class="nav-link custom-nav-text" asp-area="" asp-controller="Recipe" asp-action="Index">View Recipe List</a>
+                        </li>
+                        <li class="nav-item custom-nav-text">
+                            <a class="nav-link custom-nav-text" asp-area="" asp-controller="Recipe" asp-action="AddRecipe">Add a New Recipe</a>
+                        </li>
+                        <li class="nav-item custom-nav-text">
+                            <a class="nav-link custom-nav-text" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item custom-nav-text">
+                            <a class="nav-link custom-nav-text" asp-area="" asp-controller="User" asp-action="Index">Admin</a>
+                        </li>
+                        </li>
+                        @using Microsoft.AspNetCore.Identity
+                        @inject SignInManager<AppUser> signInManager
+                        <!--SignInManager class has a UserManager with it-->
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            // signed-in user - Log Out button and username
+                            //sign in mngrr needs our model class
+                            <li class="nav-item">
+                                <form method="post" asp-action="Logout" asp-controller="Account">
+                                    <input type="submit" value="Log Out" class="nav-link custom-nav-text btn" /> <span class="custom-nametext"> Welcome @User.Identity.Name</span>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            // get current action var action = ViewContext.RouteData.Values["action"]?.ToString();
+                            // anonymous user -
+                            // Register link and Log In button
+                            <li class="nav-item custom-nav-text">
+                                <a asp-action="Register" asp-controller="Account" asp-area="" class="nav-link custom-nav-text">
+                                    <span class="fas fa-edit"></span>&nbsp;Register
+                                </a>
+                            </li>
+                            <li class="nav-item custom-nav-text">
+                                <a asp-action="Login" asp-controller="Account" asp-area="" class="nav-link custom-nav-text"> Log In</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+  
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - ButterMountain2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

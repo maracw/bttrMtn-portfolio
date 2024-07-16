@@ -1,0 +1,81 @@
+﻿@model FilterVM
+@{
+}
+
+
+<div class="container">
+    <h1>Recipes</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <!--todo-->
+            @*<form method="get" class="custom-form">
+                <label for="search" class="control-label p-2 h5">Search Recipes by Keyword:</label><br />
+                <div class="p-2 input-group">
+                    <input name="search" class="form-control" />
+                    <button type="submit" class="form-control btn custom-btn">Submit</button>
+                </div>
+            </form>*@
+        </div>
+                <div class="col-sm-4">
+                <form method="post" class="custom-form">
+                    <select name="ingredientName" class="form-select calculate-ratio-form">
+                        @{ 
+                                foreach (string s in Model.IngredientNames)
+                                {
+                                <option for="ingredientName" value=@s>@s</option>
+                                }
+                                }
+                        </select>
+                        <button type="submit" class="btn custom-button">Search by ingredient</button>
+                    </form>
+                <div>
+        </div>
+        <div class="col-sm-2"></div>
+                    <!--filter by date-->
+        <!--div class="col-sm-6">
+            <form method="get" class="custom-form">
+                <span class="h5">Filter by Date Created</span>
+                <div class="p-2 input-group">
+                    <label>Start Date:</label>
+                    <input type="date" id="start" name="start" />
+                    <label>End Date:</label>
+                    <input type="date" id="end" name="end" />
+                    <button type="submit" class="btn custom-btn form-control">Search</button>
+                </div>
+            </form>
+        </div-->
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class=" container d-flex flex-wrap">
+                @if (@Model != null)
+                {
+                    foreach (Recipe r in Model.Recipes)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div id=@r.RecipeID name="card" class="card m-3 p-1">
+                                <div>
+                                    <img class="card-img-top img-fluid" src=@r.ImageURL alt="">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@r.Title</h5>
+                                        Creator: @r.RecipeUser.UserName<br />
+                                        Categories: @r.Category<br />
+                                        Difficulty: @r.Difficulty<br />
+                                    </div>
+                                    <div class="card-footer">
+                                        <a asp-action="Details" asp-route-id="@r.RecipeID">Details</a> |
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

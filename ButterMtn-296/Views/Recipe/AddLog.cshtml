@@ -1,0 +1,62 @@
+﻿
+@model LogEntry
+@{
+    ViewData["Title"] = "Add a Log Entry";
+}
+<br />
+<div asp-validation-summary="All" class="text-danger"></div>
+<form method="post" class="container custom-form">
+    <input type="hidden" asp-for="RecipeID" />
+    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<AppUser> signInManager
+    <!--SignInManager class has a UserManager with it-->
+    @if (signInManager.IsSignedIn(User))
+    {
+        <div class="row p-2">
+            <label asp-for="LogUser.UserName" class="control-label  col-md-1">Your name:</label><br />
+            <input asp-for="LogUser.UserName" value=@User.Identity.Name placeholder=@User.Identity.Name class="form-control col-md-6"></input>
+        </div>
+    }
+    <div class="row p-2">
+        <label asp-for="Headline" class="control-label  col-md-1">Headline:</label><br />
+        <input asp-for="Headline" placeholder="make it snappy!" class="form-control col-md-6"></input>
+    </div>
+    <div class="row p-2">
+        <label asp-for="Description" class="control-label  col-md-1">Comment</label><br />
+        <textarea asp-for="Description" placeholder="Describe what you changed here" class="form-control col-md-6">
+    </textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-check form-check-inline">
+        <div>
+            <input type="radio" class="radio_item" value="1" asp-for="Rating">
+            <label asp-for="Rating"><span class="star">1</span> </label>
+        </div>
+        <div>
+            <input type="radio" class="radio_item" value="2" asp-for="Rating">
+            <label asp-for="Rating"><span class="star">2</span> </label>
+        </div>
+        <div>
+            <input type="radio" class="radio_item" value="2" asp-for="Rating">
+            <label asp-for="Rating"><span class="star">3</span> </label>
+        </div>
+        <div>
+            <input type="radio" class="radio_item" value="1" asp-for="Rating">
+            <label asp-for="Rating"><span class="star">4</span> </label>
+        </div>
+        <div>
+            <input type="radio" class="radio_item" value="1" asp-for="Rating">
+            <label asp-for="Rating"><span class="star">5</span> </label>
+        </div>
+    </div>
+    <div class="row p-2">
+        <button type="submit" class="form-control btn btn-primary col-2">Submit</button>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

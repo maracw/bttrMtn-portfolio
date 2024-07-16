@@ -1,0 +1,58 @@
+﻿@model List<Recipe>
+
+<h1>All Recipes</h1>
+<!--h3>Want to filter? Go <a asp-action="FilterRecipes">here</a></!--h3-->
+<!--table class="table">
+    <thead>
+        <tr>
+            <th>
+                Recipe Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.RecipeID">Details</a> |
+                    <a asp-action="DeleteRecipe" asp-route-id="@item.RecipeID">Delete</a>|
+                    <a asp-action="EditRecipe" asp-route-id="@item.RecipeID">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</!--table-->
+<div class="container">
+    <div class="row">
+        <div class=" container d-flex flex-wrap">
+            @if (@Model != null)
+            {
+                foreach (Recipe r in Model)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div id=@r.RecipeID name="card" class="card m-3 p-1">
+                            <div>
+                                <img class="card-img-top img-fluid" src=@r.ImageURL alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">@r.Title</h5>
+                                    Creator: @r.RecipeUser<br />
+                                    Categories: @r.Category<br />
+                                    Difficulty: @r.Difficulty<br />
+                                </div>
+                                <div class="card-footer">
+                                    <a asp-action="Details" asp-route-id="@r.RecipeID">Details</a> |
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+</div>
