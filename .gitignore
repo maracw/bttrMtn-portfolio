@@ -8,7 +8,7 @@ appsettings.Development.json
 appsettings.Production.json
 
 # migrations
-/Migrations
+Migrations/
 
 # User-specific files
 *.rsuser
