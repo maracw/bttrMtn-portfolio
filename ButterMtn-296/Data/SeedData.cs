@@ -27,7 +27,7 @@ namespace ButterMtn_296.Data
                     Difficulty = 3,
                     Category = "Cake,Fancy",
                     RecipeUser = mara,
-                    ImageURL = "/images/beesting1.jpg",
+                    ImageURL = "/images/beesting-cake.jpg",
                     Instructions = "Melt the butter in a sturdy saucepan;\n" +
                     "Add the sugar, honey, cream and salt;\nCook on medium heat for 3-5 minutes. " +
                     "It should get bubbly and foamy;\nAdd the almonds and stir;\nEither let cool in the pan slightly, " +
@@ -77,7 +77,7 @@ namespace ButterMtn_296.Data
                     RecipeDate = DateTime.Parse("11/25/21"),
                     Difficulty = 2,
                     RecipeUser = mara,
-                    ImageURL = "/images/beesting1.jpg",
+                    ImageURL = "/images/beesting-cake.jpg",
                     Instructions = "Grease a springform pan and line the bottom with a circle of parchment paper;" +
                     "\nPreheat the oven to 350;\nMake the topping and let cool while you make the cake batter;" +
                     "\nIn a big bowl, combine the dry ingredients -flour, almond flour, leavening, and salt;\n" +
@@ -105,7 +105,7 @@ namespace ButterMtn_296.Data
                     new Ingredient {Amount=.5, Units="tsp", Name="salt"},
                     new Ingredient {Amount=2, Units="tsp", Name="baking powder"},
                     new Ingredient {Amount=.25, Units="tsp", Name="baking soda"},
-                    new Ingredient {Amount=1, Units="batch", Name="Bess Sting Cake Topping"},
+                    new Ingredient {Amount=1, Units="batch", Name="Bee Sting Cake Topping"},
                 };
 
                 //add ingredients to recipe

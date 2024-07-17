@@ -1,10 +1,6 @@
 ﻿
 @import url("https://use.typekit.net/wax4mji.css");
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0");
 
 html {
     font-size: 14px;
@@ -82,7 +78,6 @@ justify-content:space-between;
 .branding span {
     display: block;
     font-weight: bold;
-    font-size: 97px;
     line-height: 73.23px;
     padding-top: 10px;
 }
@@ -166,4 +161,14 @@ margin-left:auto;
 
 input:checked {
     color:purple;
+}
+
+.bMtn-hamburger {
+    font-size: 2.5em;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar-brand {
+    font-size: calc(1.1rem + 0.5vmin);
 }
